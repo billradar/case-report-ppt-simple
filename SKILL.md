@@ -18,13 +18,14 @@ metadata:
 ## 开始
 
 1. **准备：检查是否已安装 ppt-mcp（PowerPoint MCP）；未装则安装并让用户重启后继续**。
+   - 优先在用户可见的 PowerPoint 桌面窗口中打开已验证的工作副本，确认当前活动演示文稿和窗口可见，再通过 MCP 分页、分批编辑；操作期间保持窗口打开，让用户看到页面切换、文字和标红的变化。工具回读仍用于核验，但不以文字调用日志代替可见编辑。若 MCP 控制的是不可见/远程窗口，先说明无法满足可视过程，不声称用户能看见。
    - 项目与依赖：https://github.com/ykuwai/ppt-mcp ，以 `uvx ppt-mcp` 启动；需要 [uv](https://docs.astral.sh/uv/getting-started/installation/) 与本机 Microsoft PowerPoint（Windows/macOS）。
    - 探测：调用一次 `ppt_get_app_info` 或 `ppt_list_presentations`。**有返回 → 已安装，跳过安装，直接继续**。
    - **未安装 → 安装**：
      1. 确认 `uv` 可用（`uv --version`），缺失则先安装 uv；
      2. 写入 MCP 客户端配置：OpenCode（`opencode.json`）用 `{"$schema":"https://opencode.ai/config.json","mcp":{"powerpoint":{"type":"local","command":["uvx","ppt-mcp"],"enabled":true}}}`；其他客户端用 `{"mcpServers":{"powerpoint":{"command":"uvx","args":["ppt-mcp"]}}}`；
      3. **提示用户重启 OpenCode / 会话**（MCP 仅在启动时加载），重启后继续。
-   - 重启后仍不可用：退回 PowerShell COM / python-pptx；确无自动化能力时，只整理内容与可执行修改清单，不伪称已改 PPT。
+   - 重启后仍不可用：说明无法在 PowerPoint 窗口展示编辑过程及所选替代路径，退回 PowerShell COM / python-pptx；确无自动化能力时，只整理内容与可执行修改清单，不伪称已改 PPT。
 2. 先用 OpenCode 的文件读取能力加载 [workflow.md](references/workflow.md)，并在任何编辑前创建、验证安全副本。
 3. 盘点源 PPT 的页面、母版、背景、版式、可编辑元素、字体和已有动画；建立唯一的病例数据源（优先采用操作者自行提供的详细病例资料；未提供时才据科室/病种生成去标识化教学病例）。
 4. 按任务读取需要的参考文件：
@@ -52,7 +53,7 @@ metadata:
 
 ## 默认决策
 
-- 模板选择：用户指定了已有 PPT 时以该 PPT 为模板改造；未指定、或要求「根据模板生成」时，把 skill 内通用模板 `templates/病例汇报_通用模板.pptx` 复制到目标目录后作为起点（复制而非直接编辑母版）。
+- 模板选择：用户指定了已有 PPT 时以该 PPT 为模板改造；未指定、或要求「根据模板生成」时，先确认 skill 内通用模板 `templates/病例汇报_通用模板.pptx` 确实存在，再复制到目标目录作为起点（不直接编辑母版）。若缺失，搜索用户本次提供的已有 PPT 并使用其副本；仍没有则请求用户提供模板，不能声称已生成 PPT。
 - `layout_change_level = 0`：按原页用途在现有对象内撰写内容。保持原页面顺序、对象位置与尺寸、字体属性、缩进、表格结构和已有动画/切换。
 - 根据病例资料筛选有诊断或处置价值的体征、检查、关键阴性及病程，自己组织简明叙述；不用逐条搬运原始记录，也不用一对一替换占位词。真实病例事实可回链；教学病例生成的体征和检查结果另行记录来源。
 - 评分量表仅在已提供评分及足够依据、且对本病例确有价值时呈现；NIHSS 不是通用模板，不要求每种病都配一个评分，不根据不全的资料猜分。
@@ -66,4 +67,5 @@ metadata:
 
 - 文件名固定为 `NAME-科室-病例汇报.pptx`（NAME 为汇报人、科室为轮转科室；不再附加病种、日期等），工作/恢复副本用 `NAME-科室-病例汇报_working.pptx`。
 - 幻灯片（正文、页脚、备注、图片替代文本）一律不写“教学病例模拟数据”“模拟数据”“仅用于演示”等模拟/演示字样；确需说明数据性质或脱敏情况时，只写在交付说明里，不写进幻灯片。
+- 教学改编生成项只记录在独立交付清单（`NAME-科室-病例汇报_生成清单.md`，格式见 [generated-manifest-template.md](references/generated-manifest-template.md)）及交付说明中，列出页码、项目、生成内容、原始资料依据、需核实项；PPT 的正文、备注、页脚、图片替代文本均不写“生成/模拟/虚拟”等来源标签。真实病例不生成患者事实。
 - 保存为明确命名的最终副本；交付后删除工作副本，只保留最终版与原件，目标目录不留 `_working` 文件。汇报时说明：输出路径、修改范围、待临床核实项，以及是否通过最终质检。
