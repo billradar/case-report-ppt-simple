@@ -1,0 +1,9 @@
+# 模板文件（二进制，不入库，随 skill 目录本地保留）
+templates/
+
+# 系统与编辑器临时文件
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+~$*
