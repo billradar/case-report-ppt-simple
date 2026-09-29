@@ -16,7 +16,7 @@
 | PowerPoint MCP / PowerShell COM 技术坑 | `references/powerpoint-technical.md` |
 | 完成前审查、渲染检查、交付 | `references/validation.md` |
 | 页面改造取舍与文字示例 | `references/examples.md` |
-| 现成高质量病例、选病例 / 扩病例库 | `references/case-library.md` 与 `cases/` |
+| 可选教学示例、病例库扩充 | `references/case-library.md` 与 `cases/` |
 
 ## 核心原则（摘要）
 
@@ -55,3 +55,5 @@
 ## PowerPoint 窗口可见的操作
 
 先在用户能观看的 PowerPoint 桌面窗口打开并激活工作副本，逐页分批修改，让文字和标红的变化在窗口中可见。不要把 MCP 调用日志或聊天进度当作可视过程。后台工具只负责核验；若当前环境无法呈现同一窗口，说明限制并征得用户对替代流程的选择。PPT 不加入生成来源标注；按 `references/generated-manifest-template.md` 交付独立 `NAME-科室-病例汇报_生成清单.md`。
+
+病例库 `cases/` 只是可选参考，不是执行约束或默认事实来源。即使找到同病种，也不能机械照搬数值、体征、诊断数量、病程或结局；用户本次材料与目标优先。
