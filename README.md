@@ -34,7 +34,7 @@ case-report-ppt/
     ├── workflow.md               # 安全工作流
     ├── medical-content.md        # 病例内容与医学一致性
     ├── layout-design.md          # 布局、字体与演示设计
-    ├── mcp-platform.md           # Linux WPS / Windows、macOS PowerPoint MCP 选择
+    ├── tool-selection.md         # 已连接工具发现与能力验证
     ├── powerpoint-technical.md   # PowerPoint MCP / COM 注意事项
     ├── validation.md             # 最终质检与交付
     ├── examples.md               # 具体改造示例
@@ -54,8 +54,7 @@ cases/
 ## 使用前提
 
 - 支持以上任意一种 agent
-- Linux 优先探测 [WPS MCP](references/mcp-platform.md)，Windows/macOS 优先探测 PowerPoint MCP；按实际工具能力选择操作方式。WPS MCP 当前是文件级 `python-pptx` 工具，不会显示 WPS 窗口编辑过程
-- Windows/macOS 使用 PowerPoint MCP 时需本机 Microsoft PowerPoint；Linux WPS MCP 需 Python 环境，其演示工具不依赖可见 WPS 窗口
+- 先发现[当前已连接的 MCP 和桌面工具](references/tool-selection.md)，按实际能力选择；不绑定 WPS、PowerPoint、LibreOffice 或特定项目，不自动安装/改配置
 
 ## 快速开始
 
