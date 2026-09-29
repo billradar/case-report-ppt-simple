@@ -17,15 +17,7 @@ metadata:
 
 ## 开始
 
-1. **准备：检查是否已安装 ppt-mcp（PowerPoint MCP）；未装则安装并让用户重启后继续**。
-   - 优先在用户可见的 PowerPoint 桌面窗口中打开已验证的工作副本，确认当前活动演示文稿和窗口可见，再通过 MCP 分页、分批编辑；操作期间保持窗口打开，让用户看到页面切换、文字和标红的变化。工具回读仍用于核验，但不以文字调用日志代替可见编辑。若 MCP 控制的是不可见/远程窗口，先说明无法满足可视过程，不声称用户能看见。
-   - 项目与依赖：https://github.com/ykuwai/ppt-mcp ，以 `uvx ppt-mcp` 启动；需要 [uv](https://docs.astral.sh/uv/getting-started/installation/) 与本机 Microsoft PowerPoint（Windows/macOS）。
-   - 探测：调用一次 `ppt_get_app_info` 或 `ppt_list_presentations`。**有返回 → 已安装，跳过安装，直接继续**。
-   - **未安装 → 安装**：
-     1. 确认 `uv` 可用（`uv --version`），缺失则先安装 uv；
-     2. 写入 MCP 客户端配置：OpenCode（`opencode.json`）用 `{"$schema":"https://opencode.ai/config.json","mcp":{"powerpoint":{"type":"local","command":["uvx","ppt-mcp"],"enabled":true}}}`；其他客户端用 `{"mcpServers":{"powerpoint":{"command":"uvx","args":["ppt-mcp"]}}}`；
-     3. **提示用户重启 OpenCode / 会话**（MCP 仅在启动时加载），重启后继续。
-   - 重启后仍不可用：说明无法在 PowerPoint 窗口展示编辑过程及所选替代路径，退回 PowerShell COM / python-pptx；确无自动化能力时，只整理内容与可执行修改清单，不伪称已改 PPT。
+1. **准备：按系统选择并验证演示文稿工具**。Linux 优先探测 [WPS MCP](references/mcp-platform.md)；Windows/macOS 优先探测 PowerPoint MCP。已可用则直接调用，不重复安装。只在工具具备精确编辑、局部标红、复制同类页与保存回读能力时承担相应步骤；能力不足时按平台说明回退。用户要求可见过程时，须先确认同桌面会话中的演示文稿窗口，不能把后台文件编辑称作可见操作。
 2. 先用 OpenCode 的文件读取能力加载 [workflow.md](references/workflow.md)，并在任何编辑前创建、验证安全副本。
 3. 盘点源 PPT 的页面、母版、背景、版式、可编辑元素、字体和已有动画；建立唯一的病例数据源（优先采用操作者自行提供的详细病例资料；未提供时才据科室/病种生成去标识化教学病例）。
 4. 按任务读取需要的参考文件：
@@ -34,14 +26,15 @@ metadata:
 | --- | --- |
 | 病例资料、诊断、检查、隐私或医学一致性 | [medical-content.md](references/medical-content.md) |
 | 重排版、字体、缩进、动画、切换或可视化表达 | [layout-design.md](references/layout-design.md) |
-| PowerPoint MCP、PowerShell COM、格式保留或兼容性问题 | [powerpoint-technical.md](references/powerpoint-technical.md) |
+| Linux WPS MCP、PowerPoint MCP 与能力选择 | [mcp-platform.md](references/mcp-platform.md) |
+| 格式保留、COM 或兼容性问题 | [powerpoint-technical.md](references/powerpoint-technical.md) |
 | 完成前审查、渲染检查、恢复与交付 | [validation.md](references/validation.md) |
 | 页面改造取舍或文字示例 | [examples.md](references/examples.md) |
 | 选现成高质量病例 / 换科室病种 | [case-library.md](references/case-library.md) 与 `cases/` |
 
 **病例库仅供参考**：`cases/` 可提供结构、表达与教学情境示例；不要求先选、照搬或遵守库内病例的诊断、数值、病程、结局。以用户本次要求和所提供资料为准；真实病例不得被病例库覆盖。
 
-从项目根目录使用本技能时，参考文件位于当前 `SKILL.md` 同级的 `references/`。不要假设 OpenCode 已安装 PowerPoint MCP；先检查当前可用工具。无 PowerPoint 自动化能力时，只整理内容、提出可执行修改清单或请求用户提供可编辑环境，不伪称已修改 PPT。
+从项目根目录使用本技能时，参考文件位于当前 `SKILL.md` 同级的 `references/`。不要假设 OpenCode 已安装任何演示文稿 MCP；先按平台检查当前可用工具。无 PowerPoint 自动化能力时，只整理内容、提出可执行修改清单或请求用户提供可编辑环境，不伪称已修改 PPT。
 
 ## 不可突破的边界
 
