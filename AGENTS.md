@@ -13,6 +13,7 @@
 | 安全工作流（保护原件、先复制后编辑、恢复） | `references/workflow.md` |
 | 病例资料、诊断、检查、隐私、医学一致性 | `references/medical-content.md` |
 | 布局、字体、缩进、动画、呈现方式 | `references/layout-design.md` |
+| Linux WPS MCP / Windows、macOS PowerPoint MCP 选择 | `references/mcp-platform.md` |
 | PowerPoint MCP / PowerShell COM 技术坑 | `references/powerpoint-technical.md` |
 | 完成前审查、渲染检查、交付 | `references/validation.md` |
 | 页面改造取舍与文字示例 | `references/examples.md` |
@@ -35,10 +36,9 @@
 
 ## 工具依赖（重要）
 
-- 首选 **ppt-mcp**（PowerPoint MCP）：https://github.com/ykuwai/ppt-mcp ，以 `uvx ppt-mcp` 启动（需 uv 与本机 Microsoft PowerPoint）
-- 准备阶段先探测：调用 `ppt_get_app_info` / `ppt_list_presentations`；**已装则跳过，直接继续**
-- **未装则安装**：确认/安装 `uv`；OpenCode 写入 `opencode.json` 的 `mcp.powerpoint = {"type":"local","command":["uvx","ppt-mcp"],"enabled":true}`（其他客户端用 `{"mcpServers":{"powerpoint":{"command":"uvx","args":["ppt-mcp"]}}}`），然后**提示用户重启 OpenCode/会话后继续**
-- 仍不可用时退回 PowerShell COM / python-pptx；无自动化能力时只整理内容、建立病例数据源、给出可执行修改清单，**不伪称已修改 PPT**
+- Linux 优先探测 [Xiao-rx/wps-mcp-server](references/mcp-platform.md)，Windows/macOS 优先探测 `ppt-mcp`；已有连接直接用。
+- WPS MCP 当前通过 `python-pptx` 处理文件，不控制 WPS 窗口，且不具备本技能所需的局部标红与复制保版式页面等全部功能；不得把它当成完整方案。工具不足时选择具备能力的替代方案，并准确说明可见性与保真限制。
+- 用户要求可见过程时，必须在用户能看到的同一桌面窗口操作；做不到时先说明，不暗中转后台生成。
 
 ## 完成标准
 
