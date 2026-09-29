@@ -1,8 +1,10 @@
 # PowerPoint MCP 与 PowerShell COM 注意事项
 
-## 首选工具：ppt-mcp
+Linux WPS MCP 的平台选择和能力边界见 [mcp-platform.md](mcp-platform.md)；本文件的 `ppt_*` 与 COM 操作不适用于 WPS MCP。
 
-- 首选 **ppt-mcp**（PowerPoint MCP）：https://github.com/ykuwai/ppt-mcp ，以 `uvx ppt-mcp` 启动，需要 [uv](https://docs.astral.sh/uv/getting-started/installation/) 与本机 Microsoft PowerPoint（Windows/macOS）；本 skill 中的 `ppt_*` 工具即来自它。
+## Windows / macOS：ppt-mcp
+
+- 在 Windows/macOS 首选 **ppt-mcp**（PowerPoint MCP）：https://github.com/ykuwai/ppt-mcp ，以 `uvx ppt-mcp` 启动，需要 [uv](https://docs.astral.sh/uv/getting-started/installation/) 与本机 Microsoft PowerPoint（Windows/macOS）；本 skill 中的 `ppt_*` 工具即来自它。
 - 探测：调用 `ppt_get_app_info` / `ppt_list_presentations`。**有返回 → 已安装，跳过安装，直接继续**。
 - **未安装 → 安装，然后请用户重启后继续**：① 确认 `uv` 可用（`uv --version`），缺失先装 uv；② OpenCode 写入 `opencode.json`：`{"$schema":"https://opencode.ai/config.json","mcp":{"powerpoint":{"type":"local","command":["uvx","ppt-mcp"],"enabled":true}}}`（其他客户端：`{"mcpServers":{"powerpoint":{"command":"uvx","args":["ppt-mcp"]}}}`）；③ **提示用户重启 OpenCode / 会话**后继续。
 - 重启后仍不可用：退回 PowerShell COM / python-pptx；确无自动化能力时，只整理内容与可执行修改清单，不伪称已改 PPT。
