@@ -39,9 +39,9 @@ metadata:
 | 页面改造取舍或文字示例 | [examples.md](references/examples.md) |
 | 选现成高质量病例 / 换科室病种 | [case-library.md](references/case-library.md) 与 `cases/` |
 
-**优先用病例库**：先在 `cases/` 中按科室/病种选用现成高质量病例（见 [case-library.md](references/case-library.md)），不足时再生成。
+**病例库仅供参考**：`cases/` 可提供结构、表达与教学情境示例；不要求先选、照搬或遵守库内病例的诊断、数值、病程、结局。以用户本次要求和所提供资料为准；真实病例不得被病例库覆盖。
 
-从项目根目录使用本技能时，参考文件位于 `.opencode/skills/case-report-ppt/references/`。不要假设 OpenCode 已安装 PowerPoint MCP；先检查当前可用工具。无 PowerPoint 自动化能力时，只整理内容、提出可执行修改清单或请求用户提供可编辑环境，不伪称已修改 PPT。
+从项目根目录使用本技能时，参考文件位于当前 `SKILL.md` 同级的 `references/`。不要假设 OpenCode 已安装 PowerPoint MCP；先检查当前可用工具。无 PowerPoint 自动化能力时，只整理内容、提出可执行修改清单或请求用户提供可编辑环境，不伪称已修改 PPT。
 
 ## 不可突破的边界
 
