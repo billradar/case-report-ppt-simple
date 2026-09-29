@@ -18,7 +18,7 @@
 
 `cases/` 内置 20 个科室的 120 个病例与 8 个死亡病例讨论。
 
-按科室/病种直接选用；不足时据 `cases/_TEMPLATE.md` 扩展。索引与选用规则见 [references/case-library.md](references/case-library.md)。
+仅作可选教学参考，不要求先匹配或照搬；本次用户资料和目标优先。索引与参考方式见 [references/case-library.md](references/case-library.md)。
 
 ## 目录结构
 
