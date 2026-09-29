@@ -17,7 +17,7 @@ metadata:
 
 ## 开始
 
-1. **准备：按系统选择并验证演示文稿工具**。Linux 优先探测 [WPS MCP](references/mcp-platform.md)；Windows/macOS 优先探测 PowerPoint MCP。已可用则直接调用，不重复安装。只在工具具备精确编辑、局部标红、复制同类页与保存回读能力时承担相应步骤；能力不足时按平台说明回退。用户要求可见过程时，须先确认同桌面会话中的演示文稿窗口，不能把后台文件编辑称作可见操作。
+1. **准备：发现当前已连接的演示文稿工具**。按 [tool-selection.md](references/tool-selection.md) 枚举并实测能力，不按系统或项目预设优先级，不自动安装/改 MCP 配置。工具须能完成对应步骤的局部编辑、字符标红、扩页和保存回读；用户要求可见过程时，确认窗口在同一桌面会话。
 2. 先用 OpenCode 的文件读取能力加载 [workflow.md](references/workflow.md)，并在任何编辑前创建、验证安全副本。
 3. 盘点源 PPT 的页面、母版、背景、版式、可编辑元素、字体和已有动画；建立唯一的病例数据源（优先采用操作者自行提供的详细病例资料；未提供时才据科室/病种生成去标识化教学病例）。
 4. 按任务读取需要的参考文件：
@@ -26,7 +26,7 @@ metadata:
 | --- | --- |
 | 病例资料、诊断、检查、隐私或医学一致性 | [medical-content.md](references/medical-content.md) |
 | 重排版、字体、缩进、动画、切换或可视化表达 | [layout-design.md](references/layout-design.md) |
-| Linux WPS MCP、PowerPoint MCP 与能力选择 | [mcp-platform.md](references/mcp-platform.md) |
+| 已安装 MCP 的发现、能力与可见性选择 | [tool-selection.md](references/tool-selection.md) |
 | 格式保留、COM 或兼容性问题 | [powerpoint-technical.md](references/powerpoint-technical.md) |
 | 完成前审查、渲染检查、恢复与交付 | [validation.md](references/validation.md) |
 | 页面改造取舍或文字示例 | [examples.md](references/examples.md) |
@@ -34,7 +34,7 @@ metadata:
 
 **病例库仅供参考**：`cases/` 可提供结构、表达与教学情境示例；不要求先选、照搬或遵守库内病例的诊断、数值、病程、结局。以用户本次要求和所提供资料为准；真实病例不得被病例库覆盖。
 
-从项目根目录使用本技能时，参考文件位于当前 `SKILL.md` 同级的 `references/`。不要假设 OpenCode 已安装任何演示文稿 MCP；先按平台检查当前可用工具。无 PowerPoint 自动化能力时，只整理内容、提出可执行修改清单或请求用户提供可编辑环境，不伪称已修改 PPT。
+从项目根目录使用本技能时，参考文件位于当前 `SKILL.md` 同级的 `references/`。不要假设 OpenCode 已安装任何演示文稿 MCP；先发现当前已连接的工具。无 PowerPoint 自动化能力时，只整理内容、提出可执行修改清单或请求用户提供可编辑环境，不伪称已修改 PPT。
 
 ## 不可突破的边界
 
