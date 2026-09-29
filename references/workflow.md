@@ -2,7 +2,7 @@
 
 ## 0. 环境准备
 
-按 [mcp-platform.md](mcp-platform.md) 检查操作系统、已连接 MCP、工具能力和用户能否看见目标窗口。Linux 优先探测 WPS MCP；Windows/macOS 优先探测 PowerPoint MCP。WPS MCP 的基础演示工具是文件级操作，不能保证保留源页格式或窗口可见；所需能力不足时明确回退路径。任何工具都先在副本单页试改并回读。
+按 [tool-selection.md](tool-selection.md) 枚举当前已连接工具并验证能力和窗口可见性；不指定某个 MCP，不自动安装或改配置。任何写入先在副本单页试改并回读。能力不足时说明具体缺口。
 
 ## 1. 接收与边界确认
 
