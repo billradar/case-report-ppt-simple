@@ -2,13 +2,7 @@
 
 ## 0. 环境准备
 
-- **检查是否已安装 ppt-mcp（PowerPoint MCP）**：https://github.com/ykuwai/ppt-mcp （`uvx ppt-mcp`，需 [uv](https://docs.astral.sh/uv/getting-started/installation/) 与本机 Microsoft PowerPoint）。
-- 探测：调用 `ppt_get_app_info` / `ppt_list_presentations`。**有返回 → 已安装，跳过安装，直接进入 §1**。
-- **未安装 → 安装，然后请用户重启后继续**：
-  1. 确认 `uv` 可用（`uv --version`），缺失则先安装 uv；
-  2. 写入 MCP 客户端配置：OpenCode（`opencode.json`）用 `{"$schema":"https://opencode.ai/config.json","mcp":{"powerpoint":{"type":"local","command":["uvx","ppt-mcp"],"enabled":true}}}`；其他客户端用 `{"mcpServers":{"powerpoint":{"command":"uvx","args":["ppt-mcp"]}}}`；
-  3. **提示用户重启 OpenCode / 会话**（MCP 仅启动时加载），重启后继续执行；
-  4. 仍不可用 → 无 MCP 时可退回 PowerShell COM / python-pptx，确实无自动化能力时降级为“只整理内容与可执行修改清单”，不伪称已改 PPT。
+按 [mcp-platform.md](mcp-platform.md) 检查操作系统、已连接 MCP、工具能力和用户能否看见目标窗口。Linux 优先探测 WPS MCP；Windows/macOS 优先探测 PowerPoint MCP。WPS MCP 的基础演示工具是文件级操作，不能保证保留源页格式或窗口可见；所需能力不足时明确回退路径。任何工具都先在副本单页试改并回读。
 
 ## 1. 接收与边界确认
 
@@ -20,7 +14,7 @@
 
 ## 1.1 PowerPoint 可视编辑与回读
 
-先确认用户能看到当前 PowerPoint 桌面窗口。在该窗口打开工作副本并核对活动演示文稿路径；通过实际可用的 `ppt_*` 工具逐页编辑，适时切换当前页，使写字、局部着色和扩页的过程能在窗口中看到。每小批操作后回读对象或预览核验，保持窗口打开直至保存完成。不要把工具调用文本当作可视编辑。若 PowerPoint/MCP 运行于用户看不到的环境，不得声称“可见操作”；说明限制，询问是否接受文件级替代流程。
+先确认用户能看到当前 PowerPoint 桌面窗口。在该窗口打开工作副本并核对活动演示文稿路径；通过实际可用且能控制该窗口的工具逐页编辑，适时切换当前页，使写字、局部着色和扩页的过程能在窗口中看到。每小批操作后回读对象或预览核验，保持窗口打开直至保存完成。不要把工具调用文本当作可视编辑。若 PowerPoint/MCP 运行于用户看不到的环境，不得声称“可见操作”；说明限制，询问是否接受文件级替代流程。
 
 ## 2. 保护原件：先复制，后打开编辑副本
 
