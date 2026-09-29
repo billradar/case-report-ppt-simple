@@ -13,7 +13,7 @@
 | 安全工作流（保护原件、先复制后编辑、恢复） | `references/workflow.md` |
 | 病例资料、诊断、检查、隐私、医学一致性 | `references/medical-content.md` |
 | 布局、字体、缩进、动画、呈现方式 | `references/layout-design.md` |
-| Linux WPS MCP / Windows、macOS PowerPoint MCP 选择 | `references/mcp-platform.md` |
+| 已连接工具发现和能力选择 | `references/tool-selection.md` |
 | PowerPoint MCP / PowerShell COM 技术坑 | `references/powerpoint-technical.md` |
 | 完成前审查、渲染检查、交付 | `references/validation.md` |
 | 页面改造取舍与文字示例 | `references/examples.md` |
@@ -36,9 +36,8 @@
 
 ## 工具依赖（重要）
 
-- Linux 优先探测 [Xiao-rx/wps-mcp-server](references/mcp-platform.md)，Windows/macOS 优先探测 `ppt-mcp`；已有连接直接用。
-- WPS MCP 当前通过 `python-pptx` 处理文件，不控制 WPS 窗口，且不具备本技能所需的局部标红与复制保版式页面等全部功能；不得把它当成完整方案。工具不足时选择具备能力的替代方案，并准确说明可见性与保真限制。
-- 用户要求可见过程时，必须在用户能看到的同一桌面窗口操作；做不到时先说明，不暗中转后台生成。
+- 枚举当前会话已连接的演示文稿 MCP 与可用桌面工具，按 `references/tool-selection.md` 对实际能力逐项探测。不要预设平台优先项目，也不要自动安装、克隆或改客户端配置。
+- 局部标红、保留格式、复制同类页、保存回读与可见窗口分别验证；不满足的工具不承担对应操作。能力不足时说明缺口，不暗中改为后台文件生成。
 
 ## 完成标准
 
