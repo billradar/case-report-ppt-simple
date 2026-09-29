@@ -34,6 +34,7 @@ case-report-ppt/
     ├── workflow.md               # 安全工作流
     ├── medical-content.md        # 病例内容与医学一致性
     ├── layout-design.md          # 布局、字体与演示设计
+    ├── mcp-platform.md           # Linux WPS / Windows、macOS PowerPoint MCP 选择
     ├── powerpoint-technical.md   # PowerPoint MCP / COM 注意事项
     ├── validation.md             # 最终质检与交付
     ├── examples.md               # 具体改造示例
@@ -48,13 +49,13 @@ cases/
 - **Claude Code / opencode**：直接作为 Skill 加载（`SKILL.md`，agent-skills 格式）
 - **GitHub Copilot / Cursor / Windsurf / Cline / Codex 等**：自动读取 `AGENTS.md` 通用入口
 
-> 说明：核心知识在 `references/`（纯 Markdown，各 agent 通用）；实际修改 PPT 需要 PowerPoint MCP，无 MCP 的 agent 只能整理内容、给出可执行修改清单。
+> 说明：核心知识在 `references/`（纯 Markdown，各 agent 通用）；实际修改 PPT 需当前环境具有足够的演示文稿编辑能力；MCP 的存在不保证能保留版式或显示桌面过程。
 
 ## 使用前提
 
 - 支持以上任意一种 agent
-- PowerPoint MCP（`powerpoint` server）优先；在用户可见的 PowerPoint 窗口中逐页操作。窗口不可见时说明限制并征询文件级替代流程
-- Windows + Microsoft PowerPoint 已安装
+- Linux 优先探测 [WPS MCP](references/mcp-platform.md)，Windows/macOS 优先探测 PowerPoint MCP；按实际工具能力选择操作方式。WPS MCP 当前是文件级 `python-pptx` 工具，不会显示 WPS 窗口编辑过程
+- Windows/macOS 使用 PowerPoint MCP 时需本机 Microsoft PowerPoint；Linux WPS MCP 需 Python 环境，其演示工具不依赖可见 WPS 窗口
 
 ## 快速开始
 
